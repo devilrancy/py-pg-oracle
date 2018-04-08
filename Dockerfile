@@ -2,10 +2,12 @@ FROM python:2.7-alpine
 
 MAINTAINER Surisetty, Naresh <naresh@naresh.co>
 
-ENV ORACLE_HOME /opt/oracle/instantclient_12_1
-ENV LD_RUN_PATH=$ORACLE_HOME
+COPY oracle.zip /tmp/
 
-COPY instantclient/* /tmp/
+ADD oracle.conf /etc/ld.so.conf.d/oracle.conf
+ADD oracle.sh /etc/profile.d/oracle.sh
+RUN chmod o+r /etc/ld.so.conf.d/oracle.conf
+RUN chmod o+r /etc/profile.d/oracle.sh
 
 RUN set -ex \
         && apk add --no-cache --virtual .run-deps \
@@ -22,8 +24,9 @@ RUN set -ex \
                 openssl \
                 postgresql-dev \
         && mkdir -p /opt/oracle \
-        && unzip "/tmp/instantclient*.zip" -d /opt/oracle \
-        && ln -s $ORACLE_HOME/libclntsh.so.12.1 $ORACLE_HOME/libclntsh.so \
+        && unzip "/tmp/oracle.zip" -d /usr/lib/ \
+        && /etc/profile.d/oracle.sh \
+        && ldconfig \
         && pip --no-cache-dir install \
                 psycopg2 \
                 cx_Oracle \
