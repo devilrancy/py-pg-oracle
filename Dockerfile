@@ -8,6 +8,9 @@ COPY oracle.zip /tmp/
 
 RUN mkdir /etc/ld.so.conf.d
 
+ENV ORACLE_HOME=/usr/lib/oracle/12.1/client64
+ENV PATH=$PATH:$ORACLE_HOME/bin
+
 ADD oracle.conf /etc/ld.so.conf.d/oracle.conf
 ADD oracle.sh /etc/profile.d/oracle.sh
 RUN chmod o+r /etc/ld.so.conf.d/oracle.conf
@@ -29,7 +32,6 @@ RUN set -ex \
                 postgresql-dev \
         && mkdir -p /opt/oracle \
         && unzip "/tmp/oracle.zip" -d /usr/lib/ \
-        && /etc/profile.d/oracle.sh \
         && ldconfig \
         && pip --no-cache-dir install \
                 psycopg2 \
