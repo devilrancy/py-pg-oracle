@@ -23,7 +23,7 @@ RUN set -ex \
                 postgresql-dev \
         && mkdir -p /opt/oracle \
         && unzip "/tmp/instantclient*.zip" -d /opt/oracle \
-        ln -s $ORACLE_HOME/libclntsh.so.12.1 $ORACLE_HOME/libclntsh.so \
+        && ln -s $ORACLE_HOME/libclntsh.so.12.1 $ORACLE_HOME/libclntsh.so \
         && pip --no-cache-dir install \
                 psycopg2 \
                 cx_Oracle \
