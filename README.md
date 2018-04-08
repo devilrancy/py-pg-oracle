@@ -15,8 +15,8 @@ A Python Docker image build .
 <!-- /MDTOC -->
 
 ## Supported tags
-* **`latest` ([latest/Dockerfile](https://github.com/devilrancy/py-pg-oracle/blob/master/Dockerfile))** [![](https://images.microbadger.com/badges/image/devilrancy/py-pg-oracle:latest.svg)](https://microbadger.com/images/devilrancy/py-pg-oracle:latest)
-* **`2.7-alpine` ([2.7-alpine/Dockerfile](https://github.com/devilrancy/py-pg-oracle/blob/2.7-alpine/Dockerfile))** [![](https://images.microbadger.com/badges/image/devilrancy/py-pg-oracle:2.7-alpine.svg)](https://microbadger.com/images/devilrancy/py-pg-oracle:2.7-alpine)
+* **`latest` ([latest/Dockerfile](https://github.com/devilrancy/py-pg-oracle/blob/master/Dockerfile))** 
+* **`2.7-alpine` ([2.7-alpine/Dockerfile](https://github.com/devilrancy/py-pg-oracle/blob/2.7-alpine/Dockerfile))**
 
 If these Dockerfiles can be optimized furthur **feel free to create Pull Requests.**
 
