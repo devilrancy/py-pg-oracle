@@ -4,6 +4,8 @@ MAINTAINER Surisetty, Naresh <naresh@naresh.co>
 
 COPY oracle.zip /tmp/
 
+RUN mkdir /etc/ld.so.conf.d
+
 ADD oracle.conf /etc/ld.so.conf.d/oracle.conf
 ADD oracle.sh /etc/profile.d/oracle.sh
 RUN chmod o+r /etc/ld.so.conf.d/oracle.conf
