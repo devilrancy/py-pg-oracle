@@ -14,8 +14,8 @@ ENV LD_LIBRARY_PATH=$ORACLE_HOME/lib
 
 ADD oracle.conf /etc/ld.so.conf.d/oracle.conf
 ADD oracle.sh /etc/profile.d/oracle.sh
-RUN chmod o+r /etc/ld.so.conf.d/oracle.conf
-RUN chmod o+r /etc/profile.d/oracle.sh
+RUN chmod +x /etc/ld.so.conf.d/oracle.conf
+RUN chmod +x /etc/profile.d/oracle.sh
 
 RUN set -ex \
         && apk add --no-cache --virtual .run-deps \
@@ -33,7 +33,7 @@ RUN set -ex \
                 postgresql-dev \
         && mkdir -p /opt/oracle \
         && unzip "/tmp/oracle.zip" -d /usr/lib/ \
-        && ln -s $ORACLE_HOME/lib/libclntsh.so.12.1 $ORACLE_HOME/lib/libclntsh.so \
+        && /etc/profile.d/oracle.sh \
         && pip --no-cache-dir install \
                 psycopg2 \
                 cx_Oracle \
