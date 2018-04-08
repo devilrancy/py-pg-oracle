@@ -8,6 +8,7 @@ ENV LD_RUN_PATH=$ORACLE_HOME
 COPY instantclient/* /tmp/
 
 RUN \
+	apk add --no-cache unzip g++ libc-dev unixodbc-dev && \
 	mkdir -p /opt/oracle && \
 	unzip "/tmp/instantclient*.zip" -d /opt/oracle && \
 	ln -s $ORACLE_HOME/libclntsh.so.12.1 $ORACLE_HOME/libclntsh.so
@@ -20,9 +21,6 @@ RUN set -ex \
         && apk add --no-cache --virtual .build-deps \
                 gcc \
                 g++ \
-                unzip \
-                libc-dev \
-                unixodbc-dev \
                 musl-dev \
                 openssl \
                 postgresql-dev \
