@@ -1,8 +1,11 @@
-machine:
-  services:
-    - docker
-
-dependencies:
-  override:
-    - docker info
-    - docker build -t devilrancy/py-pg-oracle .
+version: 2
+jobs:
+ build:
+   machine: true
+   steps:
+     - checkout
+     # start proprietary DB using private Docker image
+     # with credentials stored in the UI
+     - run: |
+         docker info
+         docker build -t devilrancy/py-pg-oracle .
