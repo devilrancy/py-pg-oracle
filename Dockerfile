@@ -2,6 +2,8 @@ FROM python:2.7-alpine
 
 MAINTAINER Surisetty, Naresh <naresh@naresh.co>
 
+USER root
+
 COPY oracle.zip /tmp/
 
 RUN mkdir /etc/ld.so.conf.d
